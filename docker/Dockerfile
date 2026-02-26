@@ -83,8 +83,8 @@ RUN cd src/ && git clone https://github.com/ros-drivers/velodyne.git
 RUN cd src && git clone --branch ros2 https://github.com/mlisi1/Xsens_MTi_ROS_Driver_and_Ntrip_Client.git
 
 # GLIM
-RUN cd src && git clone https://github.com/koide3/glim_ros2.git
-RUN cd src && git clone https://github.com/koide3/glim.git
+# RUN cd src && git clone https://github.com/koide3/glim_ros2.git
+# RUN cd src && git clone https://github.com/koide3/glim.git
 
 # Agilex Bunker
 RUN cd src && git clone https://github.com/mlisi1/ugv_sdk.git

@@ -4,7 +4,7 @@ set -e
 source /opt/ros/jazzy/setup.bash
 
 colcon build \
-  --packages-select jo_bringup \
+  --packages-select jo_bringup glim glim_ros2 \ 
   --symlink-install \
 
 # 3) Source overlay
