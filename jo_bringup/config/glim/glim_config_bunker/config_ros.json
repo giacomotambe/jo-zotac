@@ -37,7 +37,7 @@
     "keep_raw_points": false,
     // IMU config
     "imu_time_offset": 0.0,
-    "points_time_offset": 0.0,
+    "points_time_offset": 1.0,
     "acc_scale": 1.0,
     // TF config
     "imu_frame_id": "imu_link",
@@ -52,11 +52,27 @@
       "libmemory_monitor.so",
       "libstandard_viewer.so",
       "librviz_viewer.so"
+      // "libdynamic_rejection_viewer.so"
       // "libimu_validator.so"
     ],
     // Topics
     "imu_topic": "/imu/data",
     "points_topic": "/velodyne_points",
-    "image_topic": "/camera1/rs1/color/image_raw"
+    "image_topic": "/camera1/rs1/color/image_raw",
+
+    // "imu_topic": "/imu/data",
+    // "points_topic": "/velodyne_points/points",
+    // "image_topic": "/camera/image",
+    
+    // QoS options
+   "imu_qos": {
+      "reliability": "reliable"
+    },
+    "points_qos": {
+      "reliability": "reliable"
+    },
+    "image_qos": {
+      "reliability": "reliable"
+    }
   }
 }

@@ -23,7 +23,7 @@ def generate_launch_description():
     # NODE LAUNCH PARAMS
     launch_imu_arg = DeclareLaunchArgument(
         'imu',
-        default_value='true',
+        default_value='false',
         description='Whether to launch the IMU stack'
     )
 
@@ -41,13 +41,13 @@ def generate_launch_description():
 
     launch_lidar_arg = DeclareLaunchArgument(
         'lidar',
-        default_value='true',
+        default_value='false',
         description='Whether to launch the Velodyne stack'
     )
 
     launch_glim_arg = DeclareLaunchArgument(
         'glim',
-        default_value='false',
+        default_value='true',
         description='Whether to launch the GLIM stack'
     )
 
@@ -210,7 +210,7 @@ def generate_launch_description():
         },
         parameters=[
             {'config_path': LaunchConfiguration('glim_param')},
-            {'use_sim_time' : False}
+            {'use_sim_time' : True}
             ],
     )
     
