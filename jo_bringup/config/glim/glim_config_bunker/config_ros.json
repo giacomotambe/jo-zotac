@@ -59,6 +59,11 @@
     "imu_topic": "/imu/data",
     "points_topic": "/velodyne_points",
     "image_topic": "/camera1/rs1/color/image_raw",
+    "bbox_topic": "/bounding_boxes",
+
+
+    // Dynamic rejection type
+    "dynamic_rejection_type": "VOXEL", // "BBOX" / "VOXEL" / "NONE"
 
     // "imu_topic": "/imu/data",
     // "points_topic": "/velodyne_points/points",

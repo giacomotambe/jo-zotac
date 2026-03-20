@@ -1,0 +1,8 @@
+{
+    "wall_bbox_registry": {
+        "overlap_threshold": 0.3,
+        "merge_weight": 0.3,
+        "enable_expiry": true,
+        "max_missed_frames": 30
+    }
+}

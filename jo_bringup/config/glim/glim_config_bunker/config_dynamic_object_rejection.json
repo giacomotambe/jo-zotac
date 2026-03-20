@@ -1,31 +1,19 @@
 {
   /*** Parameters used by the CPU-based dynamic object rejection module ***/
   "dynamic_object_rejection": {
-    // threshold for mean difference between corresponding voxels
-    "mean_difference_threshold": 0.5,
-    // threshold for covariance error to flag voxels as dynamic
-    "covariance_error_threshold": 0.5,
-    "mahalanobis_distance_threshold": 5.0,
-    // minimum change in point count to consider voxel dynamic
-    "points_number_difference_threshold": 0.5,
     // threshold for the combined dynamic score to classify a point as dynamic
     "dynamic_score_threshold": 0.1,
-    // number of threads to use for parallel processing in dynamic object rejection
+    // number of threads to use f7r parallel processing in dynamic object rejection
     "num_threads": 4,
-    "w_shift": 0.0,
-    "w_mahalanobis": 0.0,
+    "w_shift": 1.0,
+    "w_mahalanobis": 3.0,
     "w_covariance_difference": 0.0,
     "w_shape": 0.0,
-    "w_occupancy": 5.0,
-    "frame_num_memory": 5,
-    "history_factor": 0.5,
+    "w_occupancy": 0.0,
+    "frame_num_memory": 20,
+    "history_factor": 0.05,
     // Weight for spatial neighborhood dynamic consistency (new parameter)
-    "w_neighbor": 0.0
-  },
-
-  "odometry_estimation": {
-    "voxel_resolution": 1,
-    "voxelmap_levels": 2,
-    "voxelmap_scaling_factor": 0.5 
+    "w_neighbor": 0.07,
+    "points_limit": 0.3
   }
 }

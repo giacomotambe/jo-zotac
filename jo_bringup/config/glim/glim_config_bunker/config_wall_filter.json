@@ -1,0 +1,11 @@
+{
+    "wall_filter": {
+        "voxel_resolution": 0.2,
+        "ransac_max_iterations": 500,
+        "ransac_inlier_threshold": 0.15,
+        "ransac_min_inliers": 8,
+        "ransac_confidence": 0.99,
+        "wall_vertical_angle_deg": 20.0,
+        "max_planes": 8
+    }
+}
