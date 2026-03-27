@@ -25,6 +25,7 @@ RUN apt update -y \
     ros-${DISTRO}-mavros-msgs \
     ros-${DISTRO}-realsense2-camera \
     ros-${DISTRO}-realsense2-description \
+    zenity \
     python3-rosdep \
     software-properties-common \
     ca-certificates \
@@ -106,6 +107,7 @@ RUN echo "alias light_stack='ros2 launch jo_bringup jo_bringup.launch.py'" >> ~/
 RUN echo "alias glim_only='ros2 launch jo_bringup jo_bringup.launch.py imu:=false lidar:=false glim:=true'" >> ~/.bashrc 
 RUN echo "alias glim_sim='ros2 launch jo_bringup jo_bringup.launch.py imu:=false lidar:=false glim:=true use_sim_time:=true'" >> ~/.bashrc 
 RUN echo "alias full_stack='ros2 launch jo_bringup jo_bringup.launch.py glim:=true front_cam:=true back_cam:=true gnss:=true'" >> ~/.bashrc 
+RUN echo "alias bunker_only='ros2 launch jo_bringup jo_bringup.launch.py imu:=false lidar:=false bunker:=true'" >> ~/.bashrc 
 RUN echo "alias offline_viewer='ros2 run glim_ros offline_viewer'" >> ~/.bashrc 
 RUN echo "source /save_map.bash" >> ~/.bashrc 
 

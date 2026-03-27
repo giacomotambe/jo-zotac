@@ -10,6 +10,7 @@ services:
     tty: true
     network_mode: host
     ipc: host
+    pid: host
     runtime: nvidia
     deploy:
       resources:
