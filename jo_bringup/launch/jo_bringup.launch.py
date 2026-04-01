@@ -161,7 +161,11 @@ def generate_launch_description():
     bunker_condition = IfCondition(LaunchConfiguration('bunker'))
 
     bunker = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(bunker_launch),          
+        PythonLaunchDescriptionSource(bunker_launch),   
+        launch_arguments={
+            'odom_frame': 'none',
+            'base_frame': 'none2',
+        }.items(),       
         condition=bunker_condition
     )
 
