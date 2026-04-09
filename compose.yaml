@@ -23,6 +23,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /dev:/dev
       - ./jo_bringup:/home/ros/src/jo_bringup
+      - ./jo_description:/home/ros/src/jo_description
       - ~/.Xauthority:/tmp/.Xauthority:ro
       - ./saved_maps:/saved_maps
     environment:

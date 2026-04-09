@@ -6,7 +6,7 @@ sudo ip link set can0 up type can bitrate 500000 2>/dev/null || echo "CAN interf
 source /opt/ros/jazzy/setup.bash
 
 colcon build \
-  --packages-select jo_bringup \
+  --packages-select jo_bringup jo_description \
   --symlink-install \
 
 # 3) Source overlay

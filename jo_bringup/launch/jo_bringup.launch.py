@@ -82,6 +82,7 @@ def generate_launch_description():
     camera_pkg = get_package_share_directory('realsense2_camera')
     velodyne_pkg = get_package_share_directory('velodyne')
     gnss_pkg = get_package_share_directory('ntrip')
+    description_pkg = get_package_share_directory('jo_description')
     self_pkg = get_package_share_directory('jo_bringup')
     bunker_pkg = get_package_share_directory('bunker_base')
 
@@ -95,6 +96,7 @@ def generate_launch_description():
     velodyne_launch = os.path.join(velodyne_pkg, 'launch', 'velodyne-all-nodes-VLP16-launch.py')
     camera_launch = os.path.join(camera_pkg, 'launch', 'rs_launch.py')
     gnss_launch = os.path.join(gnss_pkg, 'launch', 'ntrip_launch.py')
+    description_launch = os.path.join(description_pkg, 'launch', 'description.launch.py')
     bunker_launch = os.path.join(bunker_pkg, 'launch', 'bunker_base.launch.py')
     
 
@@ -132,6 +134,11 @@ def generate_launch_description():
 
 
     # INCLUDED LAUNCH FILES
+
+    ## Robot description
+    description = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(description_launch),          
+    )
 
     ## IMU
     imu = IncludeLaunchDescription(
@@ -273,6 +280,7 @@ def generate_launch_description():
         gnss_param_file_arg,  
         glim_param_folder_arg,
         use_sim_time_arg,
+        description,
         imu,
         gnss,
         bunker,
