@@ -24,8 +24,10 @@ services:
       - /dev:/dev
       - ./jo_bringup:/home/ros/src/jo_bringup
       - ./jo_description:/home/ros/src/jo_description
+      - ./jo_navigation:/home/ros/src/jo_navigation
       - ~/.Xauthority:/tmp/.Xauthority:ro
       - ./saved_maps:/saved_maps
+      - ./bags:/bags
     environment:
       - DISPLAY=${DISPLAY}
       - NVIDIA_VISIBLE_DEVICES=all

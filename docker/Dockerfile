@@ -25,6 +25,20 @@ RUN apt update -y \
     ros-${DISTRO}-mavros-msgs \
     ros-${DISTRO}-realsense2-camera \
     ros-${DISTRO}-realsense2-description \
+    ros-${DISTRO}-nav2-common \
+    ros-${DISTRO}-nav2-controller \
+    ros-${DISTRO}-nav2-smoother \
+    ros-${DISTRO}-nav2-planner \
+    ros-${DISTRO}-nav2-behaviors \
+    ros-${DISTRO}-nav2-bt-navigator \
+    ros-${DISTRO}-nav2-waypoint-follower \
+    ros-${DISTRO}-nav2-velocity-smoother \
+    ros-${DISTRO}-nav2-lifecycle-manager \
+    ros-${DISTRO}-nav2-dwb-controller \
+    ros-${DISTRO}-nav2-navfn-planner \
+    ros-${DISTRO}-nav2-rviz-plugins \
+    ros-${DISTRO}-nav2-graceful-controller \
+    ros-${DISTRO}-robot-localization \
     zenity \
     python3-rosdep \
     software-properties-common \
@@ -102,6 +116,7 @@ COPY docker/entrypoint.sh /entrypoint.sh
 RUN sudo chmod +x /entrypoint.sh
 
 COPY docker/save_map.bash /save_map.bash
+COPY docker/record_all.bash /record_all.bash
 COPY docker/utilities.sh /etc/utilities.sh
 RUN echo 'source /etc/utilities.sh' >> ~/.bashrc
 

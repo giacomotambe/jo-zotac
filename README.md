@@ -51,7 +51,12 @@ Given that the launch commands can be quite long, some aliases to quickly run so
 + ```glim_sim``` - Launches glim SLAM with ```use_sim_time:=true```
 + ```offline_viewer``` - Opens glim's offline viewer to analyze created maps
 + ```bunker_only``` - Launches Bunker command interface
-+ ```save_map <map_name>``` - Saves the last map created by glim in the folder ```saved_maps/YYYYMMDD_HHMMSS_map_name```
++ ```save_map <map_name>``` - Saves the last map created by glim in the folder ```saved_maps/YYYYMMDD_HHMMSS_<map_name>```
++ ```localization``` - Launches local odometry module
++ ```localization_gps``` - Launches global odometry with dueal EKF configuration with GPS
++ ```navigation``` - Launches nav2 stack configured to work with local odometry
++ ```navigation_gps``` - Launches nav2 stack configured to work with global odometry and GPS
++ ```record_all <bag_name>``` - Records a rosbag of **all** topics and saves it in the folder ```bags/YYYYMMDD_HHMMSS_<bag_name>```
 
 
 ### Other launch file parameters
