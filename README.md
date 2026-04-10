@@ -57,7 +57,9 @@ Given that the launch commands can be quite long, some aliases to quickly run so
 + ```navigation``` - Launches nav2 stack configured to work with local odometry
 + ```navigation_gps``` - Launches nav2 stack configured to work with global odometry and GPS
 + ```record_all <bag_name>``` - Records a rosbag of **all** topics and saves it in the folder ```bags/YYYYMMDD_HHMMSS_<bag_name>```
++ ```record_compressed <bag_name>``` - Records a rosbag of **all** topics (only subscribing to compressed topics for image transport) and saves it in the folder ```bags/YYYYMMDD_HHMMSS_<bag_name>```
 
+> **Note:** Both ```record_all``` and ```record_compressed``` do not actually record all available topics. The first command avoids topics that contain "scanend" (this creates problems with GLIM if subscribed to) and several topics that create problems with image transports (theora, compressedDepth and some compressed version of some topics). The second command is identical to the first, with the exception that it does not record the raw version of topics (so all topics ending in "image_raw" and "image_rect_raw" are excluded).
 
 ### Other launch file parameters
 - `imu_param:=<path/to/yaml>` - Provides a path for the IMU config file.

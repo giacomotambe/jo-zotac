@@ -27,7 +27,7 @@ services:
       - ./jo_navigation:/home/ros/src/jo_navigation
       - ~/.Xauthority:/tmp/.Xauthority:ro
       - ./saved_maps:/saved_maps
-      - ./bags:/bags
+      - ./bags:/home/ros/bags
     environment:
       - DISPLAY=${DISPLAY}
       - NVIDIA_VISIBLE_DEVICES=all
