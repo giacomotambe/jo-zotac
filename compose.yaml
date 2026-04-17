@@ -25,6 +25,7 @@ services:
       - ./glim:/home/ros/src/glim
       - ./glim_ros2:/home/ros/src/glim_ros2
       - ./duccio_2026_03_04_15_40:/home/ros/duccio_2026_03_04_15_40
+      - ./rosbag2_2026_03_24-12_24_08:/home/ros/rosbag2_2026_03_24-12_24_08
     environment:
       - DISPLAY
       - NVIDIA_VISIBLE_DEVICES=all

@@ -11,6 +11,7 @@
     "config_global_mapping": "config_global_mapping_gpu.json",
     "config_wall_filter": "config_wall_filter.json",
     "config_dynamic_object_rejection": "config_dynamic_object_rejection.json",
-    "config_wall_registry": "config_wall_registry.json"
+    "config_wall_registry": "config_wall_registry.json",
+    "config_dynamic_cluster_extractor": "config_dynamic_cluster_extractor.json"
   }
 }
