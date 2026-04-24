@@ -1,6 +1,6 @@
 {
   "dynamic_object_rejection": {
-    "dynamic_score_threshold": 0.40,
+    "dynamic_score_threshold": 0.30,
     "tier1_threshold_factor": 0.55,
     "unconstrained_threshold_factor": 3.0,
     "memory_threshold_factor": 0.70,
