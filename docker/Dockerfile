@@ -105,12 +105,20 @@ RUN cd src && git clone https://github.com/koide3/glim.git
 RUN cd src && git clone https://github.com/mlisi1/ugv_sdk.git
 RUN cd src && git clone -b jazzy https://github.com/agilexrobotics/bunker_ros2.git
 
+RUN cd src && git clone https://github.com/sutharsan-311/nav2_config.git
 
-RUN rosdep install --from-paths src --ignore-src -r -y
+
+RUN cd src && git clone https://github.com/introlab/rtabmap.git
+RUN cd src &&git clone --branch ros2 https://github.com/introlab/rtabmap_ros.git
+# rosdep update && rosdep install --from-paths src --ignore-src -r -y
+RUN export MAKEFLAGS="-j6" # Can be ignored if you have a lot of RAM (>16GB)
+# colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+
+# RUN rosdep install --from-paths src --ignore-src -r -y
 
 SHELL ["/bin/bash", "-c"]
 RUN source /opt/ros/jazzy/setup.bash \
- && colcon build
+ && colcon build --cmake-args -DRTABMAP_SYNC_MULTI_RGBD=ON -DRTABMAP_SYNC_USER_DATA=ON -DCMAKE_BUILD_TYPE=Release
 
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN sudo chmod +x /entrypoint.sh
