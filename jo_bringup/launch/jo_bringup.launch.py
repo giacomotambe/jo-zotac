@@ -107,6 +107,8 @@ def generate_launch_description():
     imu_param = os.path.join(self_pkg, 'config', 'imu', 'xsens_mti_node.yaml')
     gnss_param = os.path.join(self_pkg, 'config', 'imu', 'ntrip-param.yaml')
     glim_config = os.path.join(self_pkg, 'config', 'glim', 'glim_config_bunker_sim')
+    front_cam_config = os.path.join(self_pkg, 'config', 'cameras', 'front_d455.yaml')
+    back_cam_config = os.path.join(self_pkg, 'config', 'cameras', 'back_d455.yaml')
 
 
 
@@ -230,17 +232,7 @@ def generate_launch_description():
         executable='realsense2_camera_node',
         namespace='front_camera',
         output='screen',
-        parameters=[{
-            'serial_no': '239222303721',
-            'base_frame_id': 'rs1_link',
-            'publish_tf': True,
-            'pointcloud.enable': True,
-            'decimation_filter.enable': True,
-            'decimation_filter.filter_magnitude': 6,
-            'align_depth.enable': True,
-            'pointcloud.ordered_pc': True,
-            'pointcloud.stream_filter': 2, # COLOR
-        }],
+        parameters=[front_cam_config],
         condition=IfCondition(LaunchConfiguration('front_cam')),
     )
 
@@ -249,17 +241,7 @@ def generate_launch_description():
         executable='realsense2_camera_node',
         namespace='back_camera',
         output='screen',
-        parameters=[{
-            'serial_no': '242422305079',
-            'base_frame_id': 'rs2_link',
-            'publish_tf': True,
-            'pointcloud.enable': True,
-            'decimation_filter.enable': True,
-            'decimation_filter.filter_magnitude': 6,
-            'align_depth.enable': True,
-            'pointcloud.ordered_pc': True,
-            'pointcloud.stream_filter': 2, # COLOR
-        }],
+        parameters=[back_cam_config],
         condition=IfCondition(LaunchConfiguration('back_cam')),
     )
 

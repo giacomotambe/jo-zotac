@@ -1,0 +1,282 @@
+/front_camera/camera:
+  ros__parameters:
+
+    #General parameters
+    camera_name: front_camera
+    serial_no: '239222303721'
+    base_frame_id: link
+    publish_tf: true
+    tf_prefix: ''
+    tf_publish_rate: 0.0
+    unite_imu_method: 0
+    use_sim_time: false
+    wait_for_device_timeout: -1.0
+
+    #Stream enabling parameters
+    enable_accel: true
+    enable_color: true
+    enable_depth: true
+    enable_gyro: true
+    enable_infra: false
+    enable_infra1: true
+    enable_infra2: true
+    enable_rgbd: false
+    enable_sync: false
+
+
+
+    # ============= STREAM CONFIGURATION PARAMETERS =============
+    #RGB Stream parameters
+    rgb_camera:
+      auto_exposure_priority: false
+      auto_exposure_roi:
+        bottom: 719
+        left: 0
+        right: 1279
+        top: 0
+      backlight_compensation: false
+      brightness: 0
+      color_format: RGB8
+      color_profile: 1280x720x30
+      contrast: 50
+      enable_auto_exposure: true
+      enable_auto_white_balance: true
+      exposure: 166
+      frames_queue_size: 16
+      gain: 64
+      gamma: 300
+      global_time_enabled: true
+      hue: 0
+      power_line_frequency: 3
+      saturation: 64
+      sharpness: 50
+      white_balance: 4600.0
+
+
+    #Depth Stream parameters
+    depth_module:
+      auto_exposure_limit: 200000
+      auto_exposure_limit_toggle: false
+      auto_exposure_roi:
+        bottom: 479
+        left: 0
+        right: 847
+        top: 0
+      auto_gain_limit: 248
+      auto_gain_limit_toggle: false
+      depth_format: Z16
+      depth_profile: 848x480x30
+      emitter_always_on: false
+      emitter_enabled: 1
+      emitter_on_off: false
+      enable_auto_exposure: true
+      error_polling_enabled: true
+      exposure: 33000
+      frames_queue_size: 16
+      gain: 16
+      global_time_enabled: true
+      hdr_enabled: false
+      infra1_format: Y8
+      infra2_format: Y8
+      infra_format: RGB8
+      infra_profile: 848x480x30
+      inter_cam_sync_mode: 0
+      laser_power: 150.0
+      output_trigger_enabled: false
+      sequence_id: 0
+      sequence_name: 0
+      sequence_size: 2
+      thermal_compensation: true
+      visual_preset: 0
+
+
+    align_depth:
+      enable: true
+      frames_queue_size: 16
+
+    
+    #Pointcloud parameters
+    pointcloud:
+      allow_no_texture_points: false
+      enable: true
+      filter_magnitude: 2
+      frames_queue_size: 16
+      ordered_pc: false
+      pointcloud_qos: DEFAULT
+      stream_filter: 2
+      stream_format_filter: 0
+      stream_index_filter: -1
+
+
+
+    # ============= FILTERS CONFIGURATION PARAMETERS =============
+    #Decimation filter parameters
+    decimation_filter:
+      enable: true
+      filter_magnitude: 5
+      frames_queue_size: 16
+      stream_filter: 0
+      stream_format_filter: 1
+      stream_index_filter: -1
+    
+    #Colorizer parameters (for depth visualization)
+    colorizer:
+      color_scheme: 0
+      enable: true
+      frames_queue_size: 16
+      histogram_equalization_enabled: true
+      max_distance: 6.0
+      min_distance: 0.0
+      stream_filter: 1
+      stream_format_filter: 1
+      stream_index_filter: -1
+      visual_preset: 0
+
+    #Spatial filter parameters
+    spatial_filter:
+      enable: false
+      filter_magnitude: 2
+      filter_smooth_alpha: 0.5
+      filter_smooth_delta: 20
+      frames_queue_size: 16
+      holes_fill: 0
+      stream_filter: 1
+      stream_format_filter: 1
+      stream_index_filter: -1
+    start_type_description_service: true
+
+    #Temporal filter parameters
+    temporal_filter:
+      enable: false
+      filter_smooth_alpha: 0.4
+      filter_smooth_delta: 20
+      frames_queue_size: 16
+      holes_fill: 3
+      stream_filter: 1
+      stream_format_filter: 1
+      stream_index_filter: -1
+
+    #Disparity filter parameters
+    disparity_filter:
+      enable: false
+
+    #Disparity to depth filter parameters
+    disparity_to_depth:
+      enable: false
+
+    #Hole filling filter parameters
+    hole_filling_filter:
+      enable: false
+      frames_queue_size: 16
+      holes_fill: 1
+      stream_filter: 1
+      stream_format_filter: 1
+      stream_index_filter: -1
+
+    #Rotation filter parameters
+    rotation_filter:
+      enable: false
+      frames_queue_size: 16
+      rotation: 0.0
+      stream_filter: 0
+      stream_format_filter: 0
+      stream_index_filter: -1
+
+
+    filter_by_sequence_id:
+      enable: false
+      frames_queue_size: 16
+      sequence_id: 1
+    
+
+    # ============= IMAGE TRANSPORT CONFIGURATION PARAMETERS =============
+    #Image transport parameters
+    camera:
+      color:
+        image_raw:
+          enable_pub_plugins:
+          - image_transport/compressed
+          - image_transport/raw
+      depth:
+        image_rect_raw:
+          enable_pub_plugins:
+          - image_transport/compressedDepth
+          - image_transport/raw
+      infra1:
+        image_rect_raw:
+          enable_pub_plugins:
+          - image_transport/compressed
+          - image_transport/raw
+      infra2:
+        image_rect_raw:
+          enable_pub_plugins:
+          - image_transport/compressed
+          - image_transport/raw
+
+
+
+    # ============= QOS CONFIGURATION PARAMETERS =============
+    accel_info_qos: DEFAULT
+    accel_qos: SENSOR_DATA
+
+    gyro_info_qos: DEFAULT
+    gyro_qos: SENSOR_DATA
+
+    infra1_info_qos: DEFAULT
+    infra1_qos: SYSTEM_DEFAULT
+    infra2_info_qos: DEFAULT
+    infra2_qos: SYSTEM_DEFAULT
+    infra_info_qos: DEFAULT
+    infra_qos: SYSTEM_DEFAULT
+
+    color_info_qos: DEFAULT
+    color_qos: SYSTEM_DEFAULT
+
+    depth_info_qos: DEFAULT
+    depth_qos: SYSTEM_DEFAULT
+
+    qos_overrides:
+      /parameter_events:
+        publisher:
+          depth: 1000
+          durability: volatile
+          history: keep_last
+          reliability: reliable
+
+
+    # ============= UNUSED CONFIGURATION PARAMETERS =============
+    accel_fps: 100
+    angular_velocity_cov: 0.01  
+    clip_distance: -1.0
+    diagnostics_period: 0.0
+    gyro_fps: 200
+    
+    hdr_merge:
+      enable: false
+      frames_queue_size: 16
+
+    hold_back_imu_for_frames: false  
+    initial_reset: false
+    linear_accel_cov: 0.01
+
+    motion_module:
+      enable_motion_correction: true
+      frames_queue_size: 16
+      global_time_enabled: true    
+    
+    reconnect_timeout: 6.0
+    
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+  
