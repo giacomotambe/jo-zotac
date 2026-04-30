@@ -1,0 +1,6 @@
+[submodule "glim"]
+	path = glim
+	url = https://github.com/giacomotambe/glim.git
+[submodule "glim_ros2"]
+	path = glim_ros2
+	url = https://github.com/giacomotambe/glim_ros2.git
