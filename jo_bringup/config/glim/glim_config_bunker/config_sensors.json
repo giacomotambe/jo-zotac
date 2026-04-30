@@ -42,20 +42,16 @@
   */
   "sensors": {
     // IMU config
-    "imu_acc_noise": 0.05,
-    "imu_gyro_noise": 0.02,
-    "imu_int_noise": 0.001,
-    "imu_bias_noise": 1e-5,
+    "imu_acc_noise": 0.01,
+    "imu_gyro_noise": 0.005,
+    "imu_int_noise": 0.0001,
+    "imu_bias_noise": 1e-6,
     // LiDAR config
-    "global_shutter_lidar": false,
+    "global_shutter_lidar": true,
     "T_lidar_imu": [
-      0.001,
-      0.613,
-      0.096,
-      // 0.00199995,
-      // 0.0,
-      // 0.99997350,
-      // 0.00699981
+      0.192, 
+      -0.003, 
+      -0.318,
       0.0,
       0.0,
       0.0,
@@ -63,7 +59,7 @@
     ],
     // LiDAR per-point time settings
     "autoconf_perpoint_times": true,
-    "autoconf_prefer_frame_time": false,
+    "autoconf_prefer_frame_time": true,
     "perpoint_relative_time": true,
     "perpoint_time_scale": 1.0,
     // Camera config (required for only extension modules)
@@ -73,13 +69,13 @@
       480
     ],
     "T_lidar_camera": [
-      -0.00320,
-      -0.05292,
-      0.00108,
-      0.00837,
-      0.72559,
-      -0.00328,
-      0.68807
+      -0.336, 
+      -0.014, 
+      -0.352,
+      0.0,
+      0.0,
+      1.0,
+      0.0
     ],
     "intrinsics": [
       815.498895336274,

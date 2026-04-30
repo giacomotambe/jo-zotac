@@ -65,6 +65,6 @@
     "keyframe_entropy_thresh": 0.99,
     // MISC
     "save_imu_rate_trajectory": true,
-    "num_threads": 2
+    "num_threads": 5
   }
 }
