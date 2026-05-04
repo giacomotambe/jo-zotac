@@ -38,9 +38,9 @@
     "_comment_velocity2": "velocity_beta: LP smoothing for velocity (0=instant, 1=frozen).",
     "_comment_velocity3": "motion_scale_factor: thresholds scale = 1 + factor * ||ego_motion||.",
     "velocity_beta": 0.8,
-    "velocity_static_threshold": 0.15,
+    "velocity_static_threshold": 0.10,
     "velocity_static_frames": 3,
-    "velocity_dynamic_threshold": 0.4,
+    "velocity_dynamic_threshold": 0.25,
     "motion_scale_factor": 2.0,
 
     "_comment_ema": "=== EMA dynamic score ===",
