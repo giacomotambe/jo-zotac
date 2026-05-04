@@ -22,6 +22,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ~/.Xauthority:/tmp/.Xauthority:ro
       - /dev:/dev
+      - ./jo_msgs:/home/ros/src/jo_msgs
       - ./jo_bringup:/home/ros/src/jo_bringup
       - ./glim:/home/ros/src/glim
       - ./glim_ros2:/home/ros/src/glim_ros2
