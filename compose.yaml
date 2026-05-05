@@ -31,9 +31,6 @@ services:
       - ./jo_navigation:/home/ros/src/jo_navigation
       - ./onboard_detector:/home/ros/src/onboard_detector
       - ./saved_maps:/saved_maps
-      - ./bags:/home/ros/bags
-      - ./duccio_2026_03_04_15_40:/home/ros/duccio_2026_03_04_15_40
-      - ./rosbag2_2026_03_24-12_24_08:/home/ros/rosbag2_2026_03_24-12_24_08
     environment:
       - DISPLAY=${DISPLAY}
       - NVIDIA_VISIBLE_DEVICES=all

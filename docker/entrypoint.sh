@@ -6,7 +6,7 @@ sudo ip link set can0 up type can bitrate 500000 2>/dev/null || echo "CAN interf
 source /opt/ros/jazzy/setup.bash
 
 colcon build \
-  --packages-select jo_msgs jo_bringup glim glim_ros jo_description jo_navigation \
+  --packages-select jo_msgs jo_bringup glim glim_ros jo_description jo_navigation onboard_detector \
   --symlink-install
 
 source install/setup.bash
