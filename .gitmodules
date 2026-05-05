@@ -9,4 +9,4 @@
 	url = https://github.com/ducciopet/jo_description.git
 [submodule "jo_navigation"]
 	path = jo_navigation
-	url = https://github.com/mlisi1/jo_navigation.git
+	url = https://github.com/ducciopet/jo_navigation.git
