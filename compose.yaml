@@ -29,6 +29,7 @@ services:
       - ./glim_ros2:/home/ros/src/glim_ros2
       - ./jo_description:/home/ros/src/jo_description
       - ./jo_navigation:/home/ros/src/jo_navigation
+      - ./onboard_detector:/home/ros/src/onboard_detector
       - ./saved_maps:/saved_maps
       - ./bags:/home/ros/bags
       - ./duccio_2026_03_04_15_40:/home/ros/duccio_2026_03_04_15_40
