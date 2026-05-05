@@ -25,6 +25,21 @@ RUN apt update -y \
     ros-${DISTRO}-mavros-msgs \
     ros-${DISTRO}-realsense2-camera \
     ros-${DISTRO}-realsense2-description \
+    ros-${DISTRO}-nav2-common \
+    ros-${DISTRO}-nav2-controller \
+    ros-${DISTRO}-nav2-smoother \
+    ros-${DISTRO}-nav2-planner \
+    ros-${DISTRO}-nav2-behaviors \
+    ros-${DISTRO}-nav2-bt-navigator \
+    ros-${DISTRO}-nav2-waypoint-follower \
+    ros-${DISTRO}-nav2-velocity-smoother \
+    ros-${DISTRO}-nav2-lifecycle-manager \
+    ros-${DISTRO}-nav2-dwb-controller \
+    ros-${DISTRO}-nav2-navfn-planner \
+    ros-${DISTRO}-nav2-rviz-plugins \
+    ros-${DISTRO}-nav2-graceful-controller \
+    ros-${DISTRO}-robot-localization \
+    zenity \
     python3-rosdep \
     software-properties-common \
     ca-certificates \
@@ -82,7 +97,7 @@ RUN cd src/ && git clone https://github.com/ros-drivers/velodyne.git
 # IMU
 RUN cd src && git clone --branch ros2 https://github.com/mlisi1/Xsens_MTi_ROS_Driver_and_Ntrip_Client.git
 
-# GLIM
+# GLIM — mounted as volume, not cloned
 # RUN cd src && git clone https://github.com/koide3/glim_ros2.git
 # RUN cd src && git clone https://github.com/koide3/glim.git
 
@@ -90,18 +105,28 @@ RUN cd src && git clone --branch ros2 https://github.com/mlisi1/Xsens_MTi_ROS_Dr
 RUN cd src && git clone https://github.com/mlisi1/ugv_sdk.git
 RUN cd src && git clone -b jazzy https://github.com/agilexrobotics/bunker_ros2.git
 
+RUN cd src && git clone https://github.com/sutharsan-311/nav2_config.git
 
-RUN rosdep install --from-paths src --ignore-src -r -y
+
+RUN cd src && git clone https://github.com/introlab/rtabmap.git
+RUN cd src &&git clone --branch ros2 https://github.com/introlab/rtabmap_ros.git
+# rosdep update && rosdep install --from-paths src --ignore-src -r -y
+RUN export MAKEFLAGS="-j6" # Can be ignored if you have a lot of RAM (>16GB)
+# colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+
+# RUN rosdep install --from-paths src --ignore-src -r -y
 
 SHELL ["/bin/bash", "-c"]
 RUN source /opt/ros/jazzy/setup.bash \
- && colcon build
+ && colcon build --cmake-args -DRTABMAP_SYNC_MULTI_RGBD=ON -DRTABMAP_SYNC_USER_DATA=ON -DCMAKE_BUILD_TYPE=Release
 
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN sudo chmod +x /entrypoint.sh
-RUN echo "source /opt/ros/${DISTRO}/setup.bash" >> ~/.bashrc
-RUN echo "source /home/ros/install/setup.bash" >> ~/.bashrc
-RUN echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc 
+
+COPY docker/save_map.bash /save_map.bash
+COPY docker/record_all.bash /record_all.bash
+COPY docker/utilities.sh /etc/utilities.sh
+RUN echo 'source /etc/utilities.sh' >> ~/.bashrc
 
 
 ENTRYPOINT ["/entrypoint.sh"]

@@ -51,22 +51,28 @@ def generate_launch_description():
         description='Whether to launch the GLIM stack'
     )
 
-    launch_cam1_arg = DeclareLaunchArgument(
-        'cam1',
+    launch_front_cam_arg = DeclareLaunchArgument(
+        'front_cam',
         default_value='false',
-        description='Whether to launch the RealSense cam1 stack'
+        description='Whether to launch the RealSense front camera stack'
     )
 
-    launch_cam2_arg = DeclareLaunchArgument(
-        'cam2',
+    launch_back_cam_arg = DeclareLaunchArgument(
+        'back_cam',
         default_value='false',
-        description='Whether to launch the RealSense cam2 stack'
+        description='Whether to launch the RealSense back camera stack'
     )
 
     launch_bunker_arg = DeclareLaunchArgument(
         'bunker',
         default_value='false',
         description='Whether to launch the Agilex Bunker interface'
+    )
+
+    use_sim_time_arg = DeclareLaunchArgument(
+        'use_sim_time',
+        default_value='false',
+        description='Whether to use simulation time'
     )
    
 
@@ -76,6 +82,7 @@ def generate_launch_description():
     camera_pkg = get_package_share_directory('realsense2_camera')
     velodyne_pkg = get_package_share_directory('velodyne')
     gnss_pkg = get_package_share_directory('ntrip')
+    description_pkg = get_package_share_directory('jo_description')
     self_pkg = get_package_share_directory('jo_bringup')
     bunker_pkg = get_package_share_directory('bunker_base')
 
@@ -89,6 +96,7 @@ def generate_launch_description():
     velodyne_launch = os.path.join(velodyne_pkg, 'launch', 'velodyne-all-nodes-VLP16-launch.py')
     camera_launch = os.path.join(camera_pkg, 'launch', 'rs_launch.py')
     gnss_launch = os.path.join(gnss_pkg, 'launch', 'ntrip_launch.py')
+    description_launch = os.path.join(description_pkg, 'launch', 'description.launch.py')
     bunker_launch = os.path.join(bunker_pkg, 'launch', 'bunker_base.launch.py')
     
 
@@ -98,7 +106,9 @@ def generate_launch_description():
     rviz_config = os.path.join(self_pkg, 'config', 'jo.rviz')
     imu_param = os.path.join(self_pkg, 'config', 'imu', 'xsens_mti_node.yaml')
     gnss_param = os.path.join(self_pkg, 'config', 'imu', 'ntrip-param.yaml')
-    glim_config = os.path.join(self_pkg, 'config', 'glim', 'glim_config_bunker')
+    glim_config = os.path.join(self_pkg, 'config', 'glim', 'glim_config_bunker_sim')
+    front_cam_config = os.path.join(self_pkg, 'config', 'cameras', 'front_d455.yaml')
+    back_cam_config = os.path.join(self_pkg, 'config', 'cameras', 'back_d455.yaml')
 
 
 
@@ -126,6 +136,11 @@ def generate_launch_description():
 
 
     # INCLUDED LAUNCH FILES
+
+    ## Robot description
+    description = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(description_launch),          
+    )
 
     ## IMU
     imu = IncludeLaunchDescription(
@@ -155,7 +170,11 @@ def generate_launch_description():
     bunker_condition = IfCondition(LaunchConfiguration('bunker'))
 
     bunker = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(bunker_launch),          
+        PythonLaunchDescriptionSource(bunker_launch),   
+        launch_arguments={
+            'odom_frame': 'none',
+            'base_frame': 'none2',
+        }.items(),       
         condition=bunker_condition
     )
 
@@ -177,12 +196,6 @@ def generate_launch_description():
         ]),
         condition=bunker_condition,
     )
-
-
-
-
-
-
 
 
 
@@ -210,42 +223,26 @@ def generate_launch_description():
         },
         parameters=[
             {'config_path': LaunchConfiguration('glim_param')},
-            {'use_sim_time' : True}
+            {'use_sim_time' : LaunchConfiguration('use_sim_time')}
             ],
     )
     
-    cam1 = Node(
+    front_cam = Node(
         package='realsense2_camera',
         executable='realsense2_camera_node',
-        namespace='camera1',
-        name='rs1',
+        namespace='front_camera',
         output='screen',
-        parameters=[{
-            'serial_no': '239222303721',
-            'base_frame_id': 'rs1_link',
-            'publish_tf': True,
-            'pointcloud.enable': True,
-            'decimation_filter.enable': True,
-            'decimation_filter.filter_magnitude': 6,
-        }],
-        condition=IfCondition(LaunchConfiguration('cam1')),
+        parameters=[front_cam_config],
+        condition=IfCondition(LaunchConfiguration('front_cam')),
     )
 
-    cam2 = Node(
+    back_cam = Node(
         package='realsense2_camera',
         executable='realsense2_camera_node',
-        namespace='camera2',
-        name='rs2',
+        namespace='back_camera',
         output='screen',
-        parameters=[{
-            'serial_no': '242422305079',
-            'base_frame_id': 'rs2_link',
-            'publish_tf': True,
-            'pointcloud.enable': True,
-            'decimation_filter.enable': True,
-            'decimation_filter.filter_magnitude': 6,
-        }],
-        condition=IfCondition(LaunchConfiguration('cam2')),
+        parameters=[back_cam_config],
+        condition=IfCondition(LaunchConfiguration('back_cam')),
     )
 
     
@@ -258,20 +255,22 @@ def generate_launch_description():
         launch_gnss_arg,
         launch_rviz_arg,    
         launch_glim_arg,
-        launch_cam1_arg,
-        launch_cam2_arg,
+        launch_front_cam_arg,
+        launch_back_cam_arg,
         launch_bunker_arg,
         imu_param_file_arg,  
         gnss_param_file_arg,  
         glim_param_folder_arg,
+        use_sim_time_arg,
+        description,
         imu,
         gnss,
         bunker,
         velodyne,
         rviz,
         glim,
-        cam1,
-        cam2,
+        front_cam,
+        back_cam,
         can_up_action,
         can_down_on_shutdown
     ])

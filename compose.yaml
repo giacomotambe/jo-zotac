@@ -10,6 +10,7 @@ services:
     tty: true
     network_mode: host
     ipc: host
+    pid: host
     runtime: nvidia
     deploy:
       resources:
@@ -26,13 +27,17 @@ services:
       - ./jo_bringup:/home/ros/src/jo_bringup
       - ./glim:/home/ros/src/glim
       - ./glim_ros2:/home/ros/src/glim_ros2
+      - ./jo_description:/home/ros/src/jo_description
+      - ./jo_navigation:/home/ros/src/jo_navigation
+      - ./saved_maps:/saved_maps
+      - ./bags:/home/ros/bags
       - ./duccio_2026_03_04_15_40:/home/ros/duccio_2026_03_04_15_40
       - ./rosbag2_2026_03_24-12_24_08:/home/ros/rosbag2_2026_03_24-12_24_08
     environment:
-      - DISPLAY
+      - DISPLAY=${DISPLAY}
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=all,graphics,display,video,utility,compute
-      - __NV_PRIME_RENDER_OFFLOAD=0 
+      - __NV_PRIME_RENDER_OFFLOAD=0
       - __GLX_VENDOR_LIBRARY_NAME=
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
       - XAUTHORITY=/tmp/.Xauthority

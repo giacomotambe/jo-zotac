@@ -4,9 +4,9 @@
 [submodule "glim_ros2"]
 	path = glim_ros2
 	url = https://github.com/giacomotambe/glim_ros2.git
-[submodule "jo_descritpion"]
+[submodule "jo_description"]
 	path = jo_description
 	url = https://github.com/ducciopet/jo_description.git
 [submodule "jo_navigation"]
 	path = jo_navigation
-	url = https://github.com/ducciopet/jo_navigation.git
+	url = https://github.com/mlisi1/jo_navigation.git
