@@ -17,7 +17,9 @@
     "cluster_iou_threshold": 0.2,
 
     "_comment_peer_merge": "=== Peer merging: fonde bbox vicine in una sola più grande. 0=disabilitato ===",
-    "peer_merge_distance": 2.0,
+    
+    "peer_merge_distance_outdoor": 2.0,
+    "peer_merge_distance_indoor": 1.0,
 
     "_comment_tracking": "=== Cluster tracking ===",
     "track_match_distance": 2.0,
@@ -25,6 +27,10 @@
     "track_max_missed": 5,
 
     "_comment_hysteresis": "=== Hysteresis: bbox flagged dynamic only after this many consecutive confirmed-dynamic frames ===",
-    "min_dynamic_frames": 3
+    "min_dynamic_frames": 3,
+
+    "_comment_permanent": "=== Permanent state: lock track after N consecutive frames in same state (0 = disabled) ===",
+    "permanent_dynamic_frames": 10,
+    "permanent_static_frames": 15
   }
 }
