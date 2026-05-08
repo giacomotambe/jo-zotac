@@ -5,7 +5,7 @@
     "min_pts": 2,
     "knn_max_neighbors": 32,
     "min_cluster_voxels": 3,
-    "min_points_for_bbox": 3,
+    "min_points_for_bbox": 15,
 
     "_comment_bbox": "=== Bounding-box dimensional pre-filter ===",
     "bbox_min_extent": 0.1,
