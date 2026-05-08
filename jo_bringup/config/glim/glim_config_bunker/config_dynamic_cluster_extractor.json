@@ -5,7 +5,7 @@
     "min_pts": 2,
     "knn_max_neighbors": 32,
     "min_cluster_voxels": 3,
-    "min_points_for_bbox": 15,
+    "min_points_for_bbox": 3,
 
     "_comment_bbox": "=== Bounding-box dimensional pre-filter ===",
     "bbox_min_extent": 0.1,
@@ -18,8 +18,8 @@
 
     "_comment_peer_merge": "=== Peer merging: fonde bbox vicine in una sola più grande. 0=disabilitato ===",
     
-    "peer_merge_distance_outdoor": 2.0,
-    "peer_merge_distance_indoor": 1.0,
+    "peer_merge_distance_outdoor": 2.2,
+    "peer_merge_distance_indoor": 0.2,
 
     "_comment_tracking": "=== Cluster tracking ===",
     "track_match_distance": 2.0,

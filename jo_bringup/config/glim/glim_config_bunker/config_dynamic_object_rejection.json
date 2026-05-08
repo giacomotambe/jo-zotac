@@ -1,6 +1,7 @@
+
 {
   "dynamic_object_rejection": {
-    "dynamic_score_threshold": 0.25,
+    "dynamic_score_threshold": 0.1,
     "tier1_threshold_factor": 0.55,
     "unconstrained_threshold_factor": 3.0,
     "memory_threshold_factor": 0.70,
@@ -14,10 +15,10 @@
     "history_factor": 0.3,
     "w_neighbor": 0.2,
     "points_limit": 0.05,
-    "dynamic_cluster_ratio": 0.3,
-    "cluster_propagation_threshold": 0.2,
+    "dynamic_cluster_ratio": 0.4,
+    "cluster_propagation_threshold": 0.4,
     "motion_threshold_scale": 1.0,
-    "min_shift_m": 0.075,
-    "cluster_motion_scale": 1.0
+    "min_shift_m": 0.09,
+    "cluster_motion_scale": 5.0
   }
 }
