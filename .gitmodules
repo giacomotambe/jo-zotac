@@ -12,5 +12,5 @@
 	url = https://github.com/ducciopet/jo_navigation.git
 [submodule "onboard_detector"]
 	path = onboard_detector
-	url = https://github.com/giacomotambe/Docker_LV-DOT_Jazzy.git
-	branch = package
+	url = https://github.com/ducciopet/Docker_LV-DOT_Jazzy.git
+	branch = pkg/onboard_detector
