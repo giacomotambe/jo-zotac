@@ -80,6 +80,7 @@ RUN apt update -y \
     ros-${DISTRO}-nav2-rviz-plugins \
     ros-${DISTRO}-nav2-graceful-controller \
     ros-${DISTRO}-robot-localization \
+    ros-${DISTRO}-topic-tools \
     zenity \
     python3-rosdep \
     software-properties-common \

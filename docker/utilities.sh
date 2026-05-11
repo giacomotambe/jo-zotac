@@ -17,3 +17,6 @@ alias localization_gps='ros2 launch jo_navigation localization_gps.launch.py'
 alias navigation='ros2 launch jo_navigation navigation_local.launch.py rviz:=true'
 alias navigation_gps='ros2 launch jo_navigation navigation_gps.launch.py rviz:=true'
 
+alias visodom='ros2 launch jo_navigation visodom.launch.py'
+alias detector='ros2 launch onboard_detector run_detector.launch.py'
+alias description='ros2 launch jo_description description.launch.py'
