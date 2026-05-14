@@ -20,3 +20,11 @@ alias navigation_gps='ros2 launch jo_navigation navigation_gps.launch.py rviz:=t
 alias visodom='ros2 launch jo_navigation visodom.launch.py'
 alias detector='ros2 launch onboard_detector run_detector.launch.py'
 alias description='ros2 launch jo_description description.launch.py'
+
+
+# LV-DOT Running 
+alias detector='ros2 launch onboard_detector run_detector.launch.py'
+# LV-DOT Runnig when running on bags
+alias detector_bag='ros2 launch onboard_detector run_detector.launch.py odom_pub:=true'
+
+
