@@ -106,7 +106,7 @@ def generate_launch_description():
     rviz_config = os.path.join(self_pkg, 'config', 'jo.rviz')
     imu_param = os.path.join(self_pkg, 'config', 'imu', 'xsens_mti_node.yaml')
     gnss_param = os.path.join(self_pkg, 'config', 'imu', 'ntrip-param.yaml')
-    glim_config = os.path.join(self_pkg, 'config', 'glim', 'glim_config_bunker_sim')
+    glim_config = os.path.join(self_pkg, 'config', 'glim', 'glim_config_bunker')
     front_cam_config = os.path.join(self_pkg, 'config', 'cameras', 'front_d455.yaml')
     back_cam_config = os.path.join(self_pkg, 'config', 'cameras', 'back_d455.yaml')
 
@@ -212,19 +212,15 @@ def generate_launch_description():
     )
 
 
-    glim = Node(
-        package='glim_ros',
-        executable='glim_rosnode',
-        output='screen',
-        emulate_tty=True,
+    glim = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('glim_ros'), 'launch', 'glim.launch.py')
+        ),
+        launch_arguments={
+            'config_path': LaunchConfiguration('glim_param'),
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
+        }.items(),
         condition=IfCondition(LaunchConfiguration('glim')),
-        additional_env={
-            '__NV_PRIME_RENDER_OFFLOAD': '0',
-        },
-        parameters=[
-            {'config_path': LaunchConfiguration('glim_param')},
-            {'use_sim_time' : LaunchConfiguration('use_sim_time')}
-            ],
     )
     
     front_cam = Node(

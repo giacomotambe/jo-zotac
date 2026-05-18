@@ -8,11 +8,11 @@
     "bbox_rejection_obstacle_min_removed_points": 3,
     "velocity_inflation_k": 0.85,
     "reverse_velocity_inflation_k": 0.35,
-    "rear_inflation_k": 0.35,
-    "lateral_inflation_k": 0.50,
+    "rear_inflation_k": 0.15,
+    "lateral_inflation_k": 0.20,
     "vertical_inflation_k": 0.20,
     "velocity_inflation_min": 0.1,
-    "velocity_inflation_max_speed": 5.0,
+    "velocity_inflation_max_speed": 3.0,
     "ellipse_box_cover_scale": 1.41421356237
   }
 }
